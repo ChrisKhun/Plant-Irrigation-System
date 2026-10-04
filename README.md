@@ -13,6 +13,7 @@ The system is designed to monitor important plant conditions and make plant care
 - Manually activate watering with physical buttons
 - Remotely check plant status using the Raspberry Pi
 - Remotely activate the water pump
+- Notification system to notify user on any actions or updates
 - Automatically water the plant when soil moisture becomes too low
 - Prevent the pump from running when the water reservoir is empty
 - Log sensor readings and watering events
