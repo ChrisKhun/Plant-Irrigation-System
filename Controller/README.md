@@ -6,11 +6,8 @@ The Controller contains the Arduino code responsible for interacting directly wi
 
 The Arduino controller will:
 
-- Read the soil moisture sensor.
-- Monitor the water reservoir level.
-- Control the water pump.
-- Send sensor readings to the Raspberry Pi.
-- Receive commands from the Raspberry Pi, such as turning the water pump on or off.
+- Writes commands to the raspberry pi
+- Reads information and calls information from raspberry pi
 
 ## Technology
 

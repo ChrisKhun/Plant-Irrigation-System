@@ -8,13 +8,9 @@ The dashboard will be accessible from devices such as phones, laptops, and deskt
 
 The GUI will allow users to:
 
-- View the current soil moisture level.
-- View the water reservoir level.
-- Check whether the water pump is running.
-- Manually water the plant.
-- Enable or disable automatic watering.
-- Configure the soil moisture threshold.
-- View previous watering activity and sensor readings.
+-
+-
+
 
 ## Technology
 

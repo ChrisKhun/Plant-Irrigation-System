@@ -8,13 +8,8 @@ It acts as the bridge between the Arduino controller and the web-based GUI.
 
 The backend will:
 
-- Communicate with the Arduino over USB serial.
-- Receive soil moisture and water-level readings.
-- Send pump commands to the Arduino.
-- Handle automatic watering logic.
-- Store sensor readings and watering history.
-- Manage user-configurable settings.
-- Provide a REST API for the GUI.
+-
+-
 
 ## Technology - C# .NET
 - ASP.NET Core
