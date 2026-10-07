@@ -1,6 +1,6 @@
 # PIS Backend
 
-The Backend contains the main application logic for the **Plant Irrigation Support System (PISS)** and runs on the Raspberry Pi.
+The Backend contains the main application logic for the **Plant Irrigation System (PISS)** and runs on the Raspberry Pi.
 
 It acts as the bridge between the Arduino controller and the web-based GUI.
 
