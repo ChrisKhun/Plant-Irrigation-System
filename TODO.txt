@@ -1,0 +1,9 @@
+
+
+Chris:
+    - Draw diagrams (including GUI)
+    - Plan project structure
+
+
+
+Bhavik:

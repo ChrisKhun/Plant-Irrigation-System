@@ -15,11 +15,7 @@ The backend will:
 - Store sensor readings and watering history.
 - Manage user-configurable settings.
 - Provide a REST API for the GUI.
-
-## Technology
-
-- C#
-- .NET
+## Technology - C# .NET
 - ASP.NET Core
 - SQLite
 - Raspberry Pi / Linux
