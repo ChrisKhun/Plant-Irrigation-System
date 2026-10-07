@@ -1,12 +1,12 @@
 
 
-            PISS Web GUI
+            PIS Web GUI
           React + TypeScript
                   │
                REST API
                   │
                   V
-       Raspberry Pi / Linux
+       Raspberry Pi / Linux [Backend]
            C# + ASP.NET Core
                   │
              USB Serial
