@@ -17,7 +17,6 @@ The Arduino controller will:
 - Arduino
 - C/C++
 - Arduino IDE
-- Serial communication
 
 ## Communication
 
