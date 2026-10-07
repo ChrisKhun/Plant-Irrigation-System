@@ -1,4 +1,4 @@
-# PISS Backend
+# PIS Backend
 
 The Backend contains the main application logic for the **Plant Irrigation Support System (PISS)** and runs on the Raspberry Pi.
 
