@@ -1,4 +1,4 @@
-# PISS Controller
+# PIS Controller
 
 The Controller contains the Arduino code responsible for interacting directly with the hardware used by the **Plant Irrigation Support System (PISS)**.
 
