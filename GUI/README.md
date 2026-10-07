@@ -1,6 +1,6 @@
 # PIS GUI
 
-The GUI provides a web-based dashboard for monitoring and controlling the **Plant Irrigation Support System (PISS)**.
+The GUI provides a web-based dashboard for monitoring and controlling the **Plant Irrigation System (PIS)**.
 
 The dashboard will be accessible from devices such as phones, laptops, and desktop computers through a web browser.
 
