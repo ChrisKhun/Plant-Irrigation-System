@@ -1,4 +1,4 @@
-# PISS GUI
+# PIS GUI
 
 The GUI provides a web-based dashboard for monitoring and controlling the **Plant Irrigation Support System (PISS)**.
 
