@@ -40,19 +40,20 @@ can request that the plant be watered.
 ## Planned Dashboard
 
 The initial dashboard will display:
-
 ```text
 PISS
 Plant Irrigation Support System
 
 Soil Moisture: 42%
 Water Level:   75%
+Temperature:   75F (or celcius)
 Pump:          OFF
 
-[ WATER NOW ]
+Settings:
+Notification Settings - Adjust how often to get status updates or to opt in, adjust water level notification.
+Pump Settings - Adjust amount of water pumped or length of time
+Accessibility Settings - Theme Change, Language, 
 
-Automatic Watering: ON
-Moisture Threshold: 30%
 ```
 
 Additional monitoring and configuration features may be added as the project develops.
