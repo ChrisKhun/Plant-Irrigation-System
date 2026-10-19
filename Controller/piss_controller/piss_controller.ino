@@ -1,7 +1,8 @@
 #include <DHT.h>
 
-#define DHTPIN 15
+#define DHT_PIN 15
 #define SOIL_PIN 2
+#define PUMP_PIN 5
 #define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);

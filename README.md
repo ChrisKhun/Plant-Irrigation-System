@@ -8,7 +8,7 @@ The system is designed to monitor important plant conditions and make plant care
 
 - Monitor soil moisture
 - Monitor temperature and humidity
-- Monitor water reservoir level
+- Monitor and set water reservoir level
 - Display plant statistics on a physical LCD/OLED screen
 - Manually activate watering with physical buttons
 - Remotely check plant status using the Raspberry Pi
