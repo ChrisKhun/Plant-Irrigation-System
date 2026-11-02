@@ -1,16 +1,15 @@
 #include <DHT.h>
 
-#define DHT_PIN 15
-#define SOIL_PIN 2
-#define PUMP_PIN 5
+#define DHT_PIN 4
+#define SOIL_PIN 15
+#define PUMP_PIN 2
 #define DHTTYPE DHT11
 
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht(DHT_PIN, DHTTYPE);
 
 void setup() {
   Serial.begin(115200);
   dht.begin();
-  Serial.println("DHT11 Sensor Test");
 }
 
 void loop() {
@@ -18,17 +17,11 @@ void loop() {
   float humidity = dht.readHumidity();
   float soilMoisture = analogRead(SOIL_PIN);
 
-  if (isnan(temperature) || isnan(humidity)) {
-    Serial.println("Failed to read DHT11!");
-  } else {
-    Serial.print("Temperature: ");
-    Serial.print(temperature);
-    Serial.print(" F | Humidity: ");
-    Serial.print(humidity);
-    Serial.println("%");
-    Serial.print("Soil Moisture: ");
-    Serial.println(soilMoisture);
-  }
-
-  delay(2000);
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.print(" F | Humidity: ");
+  Serial.print(humidity);
+  Serial.println("%");
+  Serial.print("Soil Moisture: ");
+  Serial.println(soilMoisture);
 }
