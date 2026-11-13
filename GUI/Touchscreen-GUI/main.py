@@ -2,6 +2,7 @@ import tkinter as tk
 
 from screens.dashboard import Dashboard
 from screens.settings import Settings
+from theme import style, color
 
 
 class IrrigationGUI:
@@ -18,17 +19,26 @@ class IrrigationGUI:
         # Navigation bar
         self.navbar = tk.Frame(
             self.root,
-            bg="#252D3A"
+            bg=color("navbar")
         )
         self.navbar.pack(side="top", fill="x")
 
+        # Close button
+        close_btn = tk.Button(
+            self.navbar,
+            text="X",
+            command=root.destroy,
+            **style("close_button")
+        )
+        close_btn.pack(side="right", padx=5)
+ 
         # Application title
         title = tk.Label(
             self.navbar,
             text="Plant Irrigation System",
             font=("Arial", 13, "bold"),
             fg="white",
-            bg="#252D3A"
+            bg=color("navbar")
         )
         title.pack(side="left", padx=10, pady=10)
 
@@ -36,7 +46,8 @@ class IrrigationGUI:
         settings_btn = tk.Button(
             self.navbar,
             text="Settings",
-            command=self.show_settings
+            command=self.show_settings,
+            **style("nav_button")
         )
         settings_btn.pack(side="right", padx=5)
 
@@ -44,14 +55,15 @@ class IrrigationGUI:
         dashboard_btn = tk.Button(
             self.navbar,
             text="Dashboard",
-            command=self.show_dashboard
+            command=self.show_dashboard,
+            **style("nav_button")
         )
         dashboard_btn.pack(side="right", padx=5)
-
+       
         # Main content container
         self.content = tk.Frame(
             self.root,
-            bg="#17212B"
+            bg=color("background")
         )
         self.content.pack(fill="both", expand=True)
 
@@ -69,7 +81,6 @@ class IrrigationGUI:
         self.clear_content()
         settings = Settings(self.content)
         settings.pack(fill="both", expand=True)
-
 
 if __name__ == "__main__":
     root = tk.Tk()

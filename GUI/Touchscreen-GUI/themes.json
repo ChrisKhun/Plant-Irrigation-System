@@ -1,0 +1,56 @@
+{
+    "colors": {
+        "background": "#F5F0E6",
+        "surface": "#FFFCF6",
+        "navbar": "#485C3F",
+        "primary": "#A7C4A0",
+        "primary_hover": "#91B58A",
+        "text": "#405A43",
+        "text_secondary": "#7D8975"
+    },
+
+    "button": {
+        "font": ["Arial", 12, "bold"],
+        "bg": "#A7C4A0",
+        "fg": "#405A43",
+        "activebackground": "#91B58A",
+        "activeforeground": "#405A43",
+        "relief": "flat",
+        "bd": 0,
+        "padx": 20,
+        "pady": 10,
+        "cursor": "hand2"
+    },
+
+    "title": {
+        "font": ["Arial", 16, "bold"],
+        "bg": "#F5F0E6",
+        "fg": "#405A43"
+    },
+
+    "nav_button": {
+        "font": ["Arial", 10, "bold"],
+        "bg": "#6B8060",
+        "fg": "#FFFFFF",
+        "activebackground": "#819775",
+        "activeforeground": "#FFFFFF",
+        "relief": "flat",
+        "bd": 0,
+        "padx": 10,
+        "pady": 5,
+        "cursor": "hand2"
+    },
+
+    "close_button": {
+        "font": ["Arial", 10, "bold"],
+        "bg": "#6B8060",
+        "fg": "#FFFFFF",
+        "activebackground": "#819775",
+        "activeforeground": "#FFFFFF",
+        "relief": "flat",
+        "bd": 0,
+        "padx": 10,
+        "pady": 5,
+        "cursor": "hand2"
+    }
+}

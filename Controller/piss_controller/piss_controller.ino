@@ -1,27 +1,15 @@
-#include <DHT.h>
 
-#define DHT_PIN 4
-#define SOIL_PIN 15
 #define PUMP_PIN 2
-#define DHTTYPE DHT11
-
-DHT dht(DHT_PIN, DHTTYPE);
 
 void setup() {
-  Serial.begin(115200);
-  dht.begin();
+  pinMode(PUMP_PIN, OUTPUT);
+  digitalWrite(PUMP_PIN, HIGH);
 }
 
 void loop() {
-  float temperature = dht.readTemperature(true);
-  float humidity = dht.readHumidity();
-  float soilMoisture = analogRead(SOIL_PIN);
+  digitalWrite(PUMP_PIN, LOW);
+  delay(5000);
 
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.print(" F | Humidity: ");
-  Serial.print(humidity);
-  Serial.println("%");
-  Serial.print("Soil Moisture: ");
-  Serial.println(soilMoisture);
+  digitalWrite(PUMP_PIN, HIGH);
+  delay(5000);
 }
