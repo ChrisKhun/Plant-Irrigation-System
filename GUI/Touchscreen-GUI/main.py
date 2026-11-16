@@ -38,8 +38,17 @@ class IrrigationGUI:
             status = f"Connection failed: {error}"
 
         # Navigation
-        nav = tk.Frame(root, bg="#3E503E")
+            nav = tk.Frame(root, bg="#3E503E")
         nav.pack(fill="x")
+
+        tk.Button(
+            nav,
+            text="X",
+            command=root.destroy,
+            bg="#587B52",
+            fg="white",
+            font=("Arial", 11)
+        ).pack(side="left", padx=5, pady=5)
 
         tk.Button(
             nav,
