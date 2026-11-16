@@ -38,17 +38,8 @@ class IrrigationGUI:
             status = f"Connection failed: {error}"
 
         # Navigation
-            nav = tk.Frame(root, bg="#3E503E")
+        nav = tk.Frame(root, bg="#3E503E")
         nav.pack(fill="x")
-
-        tk.Button(
-            nav,
-            text="X",
-            command=root.destroy,
-            bg="#587B52",
-            fg="white",
-            font=("Arial", 11)
-        ).pack(side="left", padx=5, pady=5)
 
         tk.Button(
             nav,
@@ -68,6 +59,7 @@ class IrrigationGUI:
             font=("Arial", 11)
         ).pack(side="left", padx=5, pady=5)
 
+        # Connection status
         self.status_label = tk.Label(
             root,
             text=status,
@@ -77,17 +69,16 @@ class IrrigationGUI:
         )
         self.status_label.pack(side="bottom", fill="x")
 
+        # Main content
         self.content = tk.Frame(root, bg=BG)
-        self.content.pack(
-            fill="both",
-            expand=True
-        )
+        self.content.pack(fill="both", expand=True)
 
         self.show_dashboard()
 
-        # Update GUI without freezing
+        # Poll ESP32 without freezing GUI
         self.root.after(100, self.poll_serial)
 
+        # Handle window closing
         self.root.protocol("WM_DELETE_WINDOW", self.close)
 
     def clear_content(self):
@@ -120,7 +111,9 @@ class IrrigationGUI:
 
     def set_duration(self, seconds):
         if self.connected and self.client:
-            self.client.send(f"DURATION:{seconds}")
+            if not self.client.send(f"DURATION:{seconds}"):
+                self.connected = False
+                self.set_status("Failed to send duration")
 
     def water_now(self):
         if not self.connected or not self.client:
@@ -129,26 +122,43 @@ class IrrigationGUI:
 
         duration = load_settings()["pump_duration"]
 
-        # Apply selected duration before starting
-        if self.client.send(f"DURATION:{duration}"):
-            if self.client.send("WATER"):
-                self.set_status(
-                    f"Watering requested: {duration}s"
-                )
+        # Send duration before activating pump
+        if not self.client.send(f"DURATION:{duration}"):
+            self.connected = False
+            self.set_status("Failed to set duration")
+            return
+
+        if self.client.send("WATER"):
+            self.set_status(
+                f"Watering requested: {duration}s"
+            )
+        else:
+            self.connected = False
+            self.set_status("Failed to start pump")
 
     def stop_water(self):
-        if self.connected and self.client:
-            if self.client.send("STOP"):
-                self.set_status("Stop requested")
+        if not self.connected or not self.client:
+            self.set_status("ESP32 not connected")
+            return
+
+        if self.client.send("STOP"):
+            self.set_status("Stop requested")
+        else:
+            self.connected = False
+            self.set_status("Failed to send STOP")
 
     def set_status(self, message):
         self.status_label.config(text=message)
 
     def poll_serial(self):
+        if self.closed:
+            return
+
         if self.client:
             while not self.client.messages.empty():
                 data = self.client.messages.get_nowait()
 
+                # Handle serial errors
                 if "_error" in data:
                     self.connected = False
                     self.set_status(
@@ -159,10 +169,13 @@ class IrrigationGUI:
                 if "pump" not in data:
                     continue
 
-                # First valid sensor message means
-                # the ESP32 is ready for commands
+                # First valid JSON message
                 if not self.connected:
+                    if not self.client.running:
+                        continue
+
                     self.connected = True
+
                     duration = load_settings()["pump_duration"]
                     self.client.send(
                         f"DURATION:{duration}"
@@ -170,9 +183,11 @@ class IrrigationGUI:
 
                 self.latest_data = data
 
+                # Update dashboard
                 if isinstance(self.current_screen, Dashboard):
                     self.current_screen.update_stats(data)
 
+                # Update pump status
                 pump = data.get("pump", False)
 
                 if pump:
@@ -180,8 +195,7 @@ class IrrigationGUI:
                 else:
                     self.set_status("ESP32 connected | Pump OFF")
 
-        if not self.closed:
-            self.root.after(100, self.poll_serial)
+        self.root.after(100, self.poll_serial)
 
     def close(self):
         self.closed = True
@@ -189,6 +203,7 @@ class IrrigationGUI:
         if self.client:
             if self.connected:
                 self.client.send("STOP")
+
             self.client.close()
 
         self.root.destroy()
