@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Plant Irrigation System
+Comment=Launch the PIS touchscreen dashboard
+Exec=@LAUNCHER_PATH@
+Icon=utilities-terminal
+Terminal=true
+Categories=Utility;
+StartupNotify=true
