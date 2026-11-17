@@ -24,7 +24,7 @@ void setup() {
   pinMode(PUMP_PIN, OUTPUT);
 
   Serial.begin(115200);
-  dht.begin();
+  dht.begin();see if it rec
 }
 
 void loop() {

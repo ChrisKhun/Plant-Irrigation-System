@@ -1,4 +1,6 @@
 {
-    "pump_duration": 8,
+    "pump_duration": 5,
+    "timed_watering_enabled": false,
+    "watering_interval_minutes": 51,
     "dark_mode": false
 }
